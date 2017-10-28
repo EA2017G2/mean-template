@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+- '8'
+services:
+- mongodb
+addons:
+  ssh_known_hosts: 147.83.7.157
+before_script:
+- npm install grunt-cli -g
+- cd angular-app && npm install && cd ..
+- npm install -g @angular/cli
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/mean-template-wip
+  on:
+    all_branches: true
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/mean-template
+  on:
+    branch: master
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_9ba1786e8db2_key -iv $encrypted_9ba1786e8db2_iv
+  -in ea0.enc -out /tmp/ea0 -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/ea0
+- ssh-add /tmp/ea0
