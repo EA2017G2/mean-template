@@ -14,7 +14,7 @@ deploy:
   skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/mean-template-wip
   on:
-    all_branches: true
+    branch: **
 deploy:
   provider: script
   skip_cleanup: true
