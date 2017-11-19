@@ -11,10 +11,12 @@ before_script:
 - npm install -g @angular/cli
 deploy:
 - provider: script
-  script: scripts/deploy.sh $TRAVIS_BRANCH
+  skip_cleanup: true
+  script: $TRAVIS_BUILD_DIR/scripts/deploy.sh $TRAVIS_BRANCH
   on:
     all_branches: true
 - provider: script
+  skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template
   on:
     branch: master
