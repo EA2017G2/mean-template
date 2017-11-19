@@ -10,19 +10,20 @@ before_script:
 - cd angular-app && npm install && cd ..
 - npm install -g @angular/cli
 deploy:
-- provider: script
+  provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/mean-template-wip
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template-wip
   on:
     all_branches: true
-- provider: script
+deploy:
+  provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/mean-template
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template
   on:
     branch: master
 before_deploy:
-- openssl aes-256-cbc -K $encrypted_9ba1786e8db2_key -iv $encrypted_9ba1786e8db2_iv
-  -in ea0.enc -out /tmp/ea0 -d
+- openssl aes-256-cbc -K $encrypted_cbbb6a90bd15_key -iv $encrypted_cbbb6a90bd15_iv
+  -in ea0.enc -out ea0 -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/ea0
 - ssh-add /tmp/ea0
