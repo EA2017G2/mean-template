@@ -8,6 +8,7 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../../../app');
 var should = chai.should();
+var mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
@@ -18,6 +19,7 @@ describe('Example Route TEST', function() {
 
     after(function() {
         server.server.close();
+        mongoose.connection.close();
     });
 
     beforeEach(function() {
