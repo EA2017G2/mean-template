@@ -22,7 +22,7 @@ deploy:
     branch: master
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_cbbb6a90bd15_key -iv $encrypted_cbbb6a90bd15_iv
-  -in ea0.enc -out ea0 -d
+  -in ea0.enc -out /tmp/ea0 -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/ea0
 - ssh-add /tmp/ea0
