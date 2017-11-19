@@ -10,13 +10,12 @@ before_script:
 - cd angular-app && npm install && cd ..
 - npm install -g @angular/cli
 deploy:
-  provider: script
+- provider: script
   skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template-wip
   on:
     all_branches: true
-deploy:
-  provider: script
+- provider: script
   skip_cleanup: true
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template
   on:
