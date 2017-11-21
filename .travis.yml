@@ -13,7 +13,7 @@ before_script:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: $TRAVIS_BUILD_DIR/scripts/deploy.sh $TRAVIS_BRANCH
+  script: $TRAVIS_BUILD_DIR/scripts/deploy_wip.sh $TRAVIS_BRANCH
   on:
     all_branches: true
 - provider: script
