@@ -6,6 +6,7 @@ services:
 addons:
   ssh_known_hosts: 147.83.7.157
 before_script:
+- echo -e "Host 147.83.7.157ntStrictHostKeyChecking non" >> ~/.ssh/config
 - npm install grunt-cli -g
 - cd angular-app && npm install && cd ..
 - npm install -g @angular/cli
