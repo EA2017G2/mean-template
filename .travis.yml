@@ -18,7 +18,7 @@ deploy:
     all_branches: true
 - provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ea0@147.83.7.157:/home/ea0/PROJECTS/mean-template
+  script: $TRAVIS_BUILD_DIR/scripts/deploy.sh
   on:
     branch: master
 before_deploy:
