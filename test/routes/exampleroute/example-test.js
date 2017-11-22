@@ -8,7 +8,6 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../../../app');
 var should = chai.should();
-var mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
